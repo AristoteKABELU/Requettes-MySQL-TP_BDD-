@@ -1,12 +1,11 @@
 /*__________Recherche un etudiant_________*/
 
 SELECT CONCAT(`nom_etudiant`," ", `post_nom_etudiant`," ",`prenom_etudiant`) as `Nom complet`,
- CONCAT(`nom_promotion`," ", `nom_filiere`) as `Promotion`,
-        `date_naissance_etudiant`, `biographie_etudiant`
-FROM `t_etudiant e` 
+`nom_promotion`, `nom_filiere`, `date_naissance_etudiant`, `biographie_etudiant`
+FROM `t_etudiant` e
 LEFT JOIN `t_promotion` p on e.fk_promotion_etudiant = p.id_promotion
 LEFT JOIN `t_filiere` f on p.fk_filiere_promotion = f.id_filiere
-WHERE (`nom_etudiant` = '') AND ('prenom_etudiant' = '') AND ('post_nom_etudiant' = '') ;
+WHERE (`nom_etudiant` = 'KABULO') AND (`post_nom_etudiant` = 'NGOY') AND (`prenom_etudiant` = 'ISRAEL') ;
 
 
 
@@ -29,8 +28,7 @@ WHERE `nom_etudiant` = 'KABEMBA' AND (`post_nom_etudiant`= 'KABELU') AND (`preno
 --Trie croissant--
 
 SELECT DISTINCT CONCAT(`nom_etudiant`," ", `post_nom_etudiant`," ",`prenom_etudiant`) as `Nom complet`,
- CONCAT(`nom_promotion`," ", `nom_filiere`) as `Promotion`,
-        `date_naissance_etudiant`, `biographie_etudiant`
+`nom_promotion`, `nom_filiere`, `date_naissance_etudiant`, `biographie_etudiant`
 FROM `t_etudiant` e
 LEFT JOIN `t_promotion` p on e.fk_promotion_etudiant = p.id_promotion
 LEFT JOIN `t_filiere` f on p.fk_filiere_promotion = f.id_filiere
@@ -38,9 +36,8 @@ ORDER BY `nom_etudiant` ASC;
 
 --Trie decroissant--
 
-SELECT CONCAT(`nom_etudiant`," ", `post_nom_etudiant`," ",`prenom_etudiant`) as `Nom complet`,
- CONCAT(`nom_promotion`," ", `nom_filiere`) as `Promotion`,
-        `date_naissance_etudiant`, `biographie_etudiant`
+SELECT DISTINCT CONCAT(`nom_etudiant`," ", `post_nom_etudiant`," ",`prenom_etudiant`) as `Nom complet`,
+`nom_promotion`, `nom_filiere`, `date_naissance_etudiant`, `biographie_etudiant`
 FROM `t_etudiant` e
 LEFT JOIN `t_promotion` p on e.fk_promotion_etudiant = p.id_promotion
 LEFT JOIN `t_filiere` f on p.fk_filiere_promotion = f.id_filiere
@@ -67,7 +64,6 @@ GROUP BY `nom_promotion`;
 
 --Compte--
 SELECT COUNT(*) AS nombre_etudiant FROM `t_etudiant`;
-
 
 
 
